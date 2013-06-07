@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Wymeditor by wymeditor</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Wymeditor</h1>
+        <p>Javascript WYSIWYM editor focused on clean, semantic markup</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/wymeditor/wymeditor" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/wymeditor/wymeditor/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/wymeditor/wymeditor/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a name="wymeditor" class="anchor" href="#wymeditor"><span class="octicon octicon-link"></span></a>WYMeditor</h1>
+
+<p>WYMeditor is an open source web-based WYSIWYM editor with semantics and
+standards in mind. The WYM-part stands for "What You Mean" compared to the more
+common "What You See Is What You Get".</p>
+
+<h2>
+<a name="why-wymeditor" class="anchor" href="#why-wymeditor"><span class="octicon octicon-link"></span></a>Why WYMeditor?</h2>
+
+<p>WYMeditor is different from the
+<a href="http://www.tinymce.com/">traditional</a> <a href="http://ckeditor.com/">editors</a>
+because we are 100% focused on providing a simple experience for users that
+separates the content of their document from the presentation of that document.
+We focus on enforcing web standards and separating a document's structure
+(HTML) from its presentation (CSS). Your users won't know and shouldn't care
+about HTML, but when they need consistent, standards-compliant, clean content,
+they'll thank you.</p>
+
+<p>There are lots of choices when it comes to a brower-based editor and many of
+them are stable, mature projects with thousands of users. If you need an editor
+that gives total control and flexibility to the user (not you, the developer),
+then WYMeditor is probably not for you. If you want an editor that you can
+customize to provide the specific capabilities your users need, and you want
+users focused on the structure of their content instead of tweaking fonts and
+margins, you should give WYMeditor a try.</p>
+
+<p>We also fully support Internet Explorer 6, for those poor souls who have no
+choice.</p>
+
+<h2>
+<a name="try-it" class="anchor" href="#try-it"><span class="octicon octicon-link"></span></a>Try It</h2>
+
+<p>Want to see what WYMeditor can do? Try the <a href="http://wymeditor.no.de/wymeditor/examples/">WYMeditor examples</a> right now.</p>
+
+<p>These examples run the bleeding edge code and give you a good idea of what
+WYMeditor can do.</p>
+
+<h2>
+<a name="quick-start" class="anchor" href="#quick-start"><span class="octicon octicon-link"></span></a>Quick Start</h2>
+
+<ol>
+<li>WYMeditor requires a version of jQuery between 1.2.6 and 1.9.1. First ensure
+that your page includes jQuery.</li>
+</ol><p><em>Note</em>: If a version of jQuery at or above 1.8.0 is used, WYMeditor also
+requires jQuery Migrate. Ensure that your page also includes jQuery
+Migrate after jQuery is included.</p>
+
+<ol>
+<li><p>Download the
+<a href="https://github.com/downloads/wymeditor/wymeditor/wymeditor-1.0.0b4.tar.gz">Version 1.0.0b4</a>
+archive and extract the contents to a folder in your project.</p></li>
+<li>
+<p>Include the <code>wymeditor/jquery.wymeditor.min.js</code> file on your page. This file
+will pull in anything else that's required.</p>
+
+</li>
+<li>
+<p>Now use the <code>wymeditor()</code> function to select one of your <code>textarea</code> elements
+and turn it in to a WYMeditor instance. eg. if you have a <code>textarea</code> with the
+class <code>my-wymeditor</code>:</p>
+
+<p>$('.my-wymeditor').wymeditor();</p>
+</li>
+</ol><p><em>Note</em>: You'll probably want to do this initialization inside a
+<code>$(document).ready()</code> block.</p>
+
+<ol>
+<li>
+<p>If you'd like to receive the valid HTML your editor produce on form
+submission, just add the class <code>wymupdate</code> to your submit button.</p>
+
+<p></p>
+</li>
+<li><p>???</p></li>
+<li><p>Profit!</p></li>
+</ol><p>More examples with different plugins and configuration options can be found in
+your <code>examples</code> directory.</p>
+
+<h2>
+<a name="compatibility" class="anchor" href="#compatibility"><span class="octicon octicon-link"></span></a>Compatibility</h2>
+
+<p>WYMeditor is compatible with:</p>
+
+<ul>
+<li>IE 6, 7, 8 and 9</li>
+<li>Firefox 3.6.x, 9.x and 10.x</li>
+<li>Opera 9.5+</li>
+<li>Safari 3.0+</li>
+<li>Google Chrome Stable and Beta</li>
+</ul><h2>
+<a name="contributing-to-wymeditor" class="anchor" href="#contributing-to-wymeditor"><span class="octicon octicon-link"></span></a>Contributing to WYMeditor</h2>
+
+<h3>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h3>
+
+<p>We need a lot of help in the documentation department. We moved from the old
+<a href="http://trac.wymeditor.org/trac">trac repository</a> earlier this year and still
+haven't ported over the relevant documentation. Porting that, fileing
+documentation tickets or even just asking questions on IRC at #wymeditor on
+freenode would be very helpful.</p>
+
+<h3>
+<a name="testing-wymeditor" class="anchor" href="#testing-wymeditor"><span class="octicon octicon-link"></span></a>Testing WYMeditor</h3>
+
+<p>WYMeditor includes a full unit test suite to help us ensure that the editor
+works great across a variety of browsers. The test suite should pass in any of
+our supported browsers and if it doesn't, please
+<a href="https://github.com/wymeditor/wymeditor/issues/new">file a bug</a> so we can fix it!</p>
+
+<p>To run the test suite.</p>
+
+<ol>
+<li>
+<p>Get a copy of the source using git:</p>
+
+<p>git clone git://github.com/wymeditor/wymeditor.git</p>
+</li>
+<li>
+<p>Put your source behind some kind of web server (apache, nginx, etc). If you
+don't have one installed or don't want to fuss with configuration, you can use
+python's HTTP server:</p>
+
+<p>$ cd /path/to/my/wymeditor/src
+$ python -m SimpleHTTPServer</p>
+</li>
+<li><p>The unit test suite is located at <code>src/test/unit/index.html</code>, so if you used
+the python instructions, open up your browser to
+<a href="http://localhost:8000/test/unit/index.html">http://localhost:8000/test/unit/index.html</a>.</p></li>
+</ol><p>All green means you're good to go.</p>
+
+<ol>
+<li>
+<p>Want to run the tests from the command line? You can do that to! Just install
+<a href="http://www.phantomjs.org/">PhantomJS</a> and then (if you used the http server
+from step 2) call:</p>
+
+<p>$ build/phantomjs_test.sh localhost:8000/test/unit</p>
+</li>
+</ol><h4>
+<a name="testing-different-jquery-versions" class="anchor" href="#testing-different-jquery-versions"><span class="octicon octicon-link"></span></a>Testing Different jQuery Versions</h4>
+
+<p>The unit tests can be run with the different versions of jQuery hosted on
+Google's CDN by appending the URL parameter <code>?jquery=&lt;version&gt;</code>. For example,
+to test with jQuery 1.8.0 against a local server on port 8000:</p>
+
+<p><a href="http://localhost:8000/test/unit/?jquery=1.8.0">http://localhost:8000/test/unit/?jquery=1.8.0</a>.</p>
+
+<h3>
+<a name="building-wymeditor" class="anchor" href="#building-wymeditor"><span class="octicon octicon-link"></span></a>Building WYMeditor</h3>
+
+<ol>
+<li>
+<p>Get a copy of the source using git:</p>
+
+<p><code>git clone git://github.com/wymeditor/wymeditor.git</code></p>
+</li>
+<li>
+<p>Install <code>make</code>, Node.js and <a href="https://github.com/mishoo/UglifyJS/">UglifyJS</a>.
+To install UglifyJS using <a href="http://npmjs.org/">NPM</a> run the following:</p>
+
+<p><code>npm install -g uglify-js</code></p>
+</li>
+<li>
+<p>Run <code>make</code> from your git clone:</p>
+
+<p><code>$ cd wymeditor</code></p>
+
+<p><code>$ make</code></p>
+</li>
+</ol><p>The resulting compressed distribution will appear in your <code>dist</code> directory.</p>
+
+<h4>
+<a name="building-with-googles-closure-compiler-java" class="anchor" href="#building-with-googles-closure-compiler-java"><span class="octicon octicon-link"></span></a>Building with Google's Closure Compiler (Java)</h4>
+
+<p>The default WYMeditor distribution is built with
+<a href="https://github.com/mishoo/UglifyJS">UglifyJS</a>, which requires the
+installation of Node.js. If you prefer Java and/or Google's Closure Compiler,
+you can follow these instructions instead.</p>
+
+<ol>
+<li>
+<p>Get a copy of the source using git:</p>
+
+<p><code>git clone git://github.com/wymeditor/wymeditor.git</code></p>
+</li>
+<li><p>Install <code>make</code> and Java.</p></li>
+<li><p>Download
+<a href="https://developers.google.com/closure/compiler/">Closure Compiler application</a>,
+extracting <code>compiler.jar</code> into your <code>wymeditor</code> directory.</p></li>
+<li>
+<p>Run <code>make</code> from your git clone:</p>
+
+<p><code>$ cd wymeditor</code></p>
+
+<p><code>$ make min_closure archive</code></p>
+</li>
+</ol><h2>
+<a name="getting-help" class="anchor" href="#getting-help"><span class="octicon octicon-link"></span></a>Getting Help</h2>
+
+<ul>
+<li>
+<strong>Wiki/Docs:</strong> <a href="https://github.com/wymeditor/wymeditor/wiki">https://github.com/wymeditor/wymeditor/wiki</a>
+</li>
+<li>
+<strong>Forum:</strong> <a href="http://community.wymeditor.org">http://community.wymeditor.org</a>
+</li>
+<li>
+<strong>Issue tracking:</strong> <a href="https://github.com/wymeditor/wymeditor/issues">https://github.com/wymeditor/wymeditor/issues</a>
+</li>
+<li>
+<strong>Official branch:</strong> <a href="https://github.com/wymeditor/wymeditor">https://github.com/wymeditor/wymeditor</a>
+</li>
+</ul><p><a href="https://github.com/wymeditor/wymeditor/wiki/Contributing">Read more on contributing</a>.</p>
+
+<h2>
+<a name="copyright" class="anchor" href="#copyright"><span class="octicon octicon-link"></span></a>Copyright</h2>
+
+<p>Copyright (c) 2005 - 2011 Jean-Francois Hovinne,
+Dual licensed under the MIT (MIT-license.txt)
+and GPL (GPL-license.txt) licenses.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/wymeditor">wymeditor</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
