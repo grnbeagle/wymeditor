@@ -1199,7 +1199,12 @@ WYMeditor.Helper = {
             }
         }
         return null;
+    },
+
+    htmlEncode: function(value) {
+      return $('<div/>').text(value).html();
     }
+
 };
 
 

@@ -1250,12 +1250,12 @@ WYMeditor.editor.prototype.insert = function (html) {
 
 WYMeditor.editor.prototype.wrap = function (left, right) {
     this.insert(
-        left + this._iframe.contentWindow.getSelection().toString() + right
+        left + WYMeditor.Helper.htmlEncode(this._iframe.contentWindow.getSelection().toString()) + right
     );
 };
 
 WYMeditor.editor.prototype.unwrap = function () {
-    this.insert(this._iframe.contentWindow.getSelection().toString());
+    this.insert(WYMeditor.Helper.htmlEncode(this._iframe.contentWindow.getSelection().toString()));
 };
 
 WYMeditor.editor.prototype.setFocusToNode = function (node, toStart) {
@@ -2539,3 +2539,99 @@ WYMeditor.editor.prototype.loadSkin = function () {
         WYMeditor.SKINS[this._options.skin].init(this);
     }
 };
+
+// LACUNA HELPERS
+/**
+    editor.cleanUpCopiedClasssAndAttribute
+   =======================================
+
+    Since Lacuna adds classes and custom attributes, make sure new paragraphs
+    don't have these classes and attrs.
+*/
+WYMeditor.editor.prototype.cleanUpCopiedClassAndAttribute = function () {
+  var container = this.selected(); // test
+  if (container) {
+    if (container.tagName.toLowerCase() == 'p') {
+      jQuery(container).removeAttr('class');
+      if (this._options.whiteListedAttributes) {
+        $(this._options.whiteListedAttributes).each(function(index, attr) {
+          jQuery(container).removeAttr(attr);
+        });
+      }
+    } else {
+      if (jQuery(container).parent()[0].tagName.toLowerCase() == 'p') {
+        jQuery(container).parent().removeAttr('class');
+        jQuery(container).parent().children().remove(); // cleanup children
+      }
+    }
+  }
+};
+
+WYMeditor.editor.prototype.preventDeletingFloat = function(evt) {
+  var container = this.selected();
+    var containerContent = $(container).html();
+    if (containerContent.length < 5) {
+      containerContent = containerContent.replace('<br>', '');
+      if ($.trim(containerContent) == "" && $(container).prev().hasClass('lcn_container_float')) {
+        evt.preventDefault(); return false;
+      }
+    }
+}
+/**
+    WYMeditor.editor.getSelectedText
+    ================================
+
+    Return selected text - wym.selected() returns parent node of selected text
+*/
+WYMeditor.editor.prototype.getSelectedText = function() {
+   var wym = this._wym;
+   var selection, range;
+
+   selection = rangy.getSelection(wym._iframe.contentWindow);
+   range = selection.getRangeAt(0);
+   var node = $('<div id="dummy_node"></div>').append(range.cloneContents());
+   var txt = node.html();
+   node.remove();
+
+   return txt.toString();
+};
+
+/**
+    WYMeditor.editor.outOfCurrentElement
+    ====================================
+
+   Get out of the current element
+*/
+WYMeditor.editor.prototype.outOfCurrentElement = function(currentNode) {
+  var currentIndex = 0,
+      parentContent = $(currentNode).parent().contents(),
+      wym = this._wym;
+
+  // retrieve elements and text nodes
+  parentContent.each(function(index, node) {
+    if (node.isSameNode(currentNode)) { currentIndex = index; return false; }
+  });
+  var nextNode, nextNextNode;
+  if (parentContent.length <= currentIndex+1) {
+    var textNode = document.createTextNode(' ');
+    $(currentNode).parent().append(textNode);
+    nextNode = textNode;
+  } else {
+    nextNode = parentContent[currentIndex+1];
+  }
+  if (parentContent.length >= currentIndex+3) {
+    nextNextNode = parentContent[currentIndex+2];
+  }
+  if ($.trim(nextNode.nodeValue).length == 0) {
+    if (nextNextNode && nextNextNode.nodeType == 1) {
+      // do nothing if next next node is an element
+    } else {
+      nextNode.nodeValue = ' \u00A0';
+    }
+  }
+  var range = rangy.createRange(wym._iframe.contentWindow.document);
+  range.setStart(nextNode, 1);
+  range.collapse(true);
+  var selection = rangy.getSelection();
+  selection.setSingleRange(range);
+}

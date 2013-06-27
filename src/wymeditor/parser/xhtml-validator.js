@@ -25,6 +25,7 @@ WYMeditor.XhtmlValidator = {
             "title",
             "accesskey",
             "tabindex",
+            "target",
             "/^data-.*/"
             ]
         },

@@ -148,6 +148,8 @@ WYMeditor.WymClassSafari.prototype.keydown = function (e) {
         // a new line after bold text
         wym._exec('InsertLineBreak');
         e.preventDefault();
+    } else if (e.keyCode == WYMeditor.KEY.BACKSPACE) {
+      wym.preventDeletingFloat(e);
     }
 };
 
@@ -197,6 +199,11 @@ WYMeditor.WymClassSafari.prototype.keyup = function (evt) {
             name = container.parentNode.tagName.toLowerCase();
         }
 
+        // AK: prevent people from typing inside cite tag-- reserved for commentary/citation
+        if (name === "cite") {
+          wym.outOfCurrentElement(container);
+        }
+
         if (name === WYMeditor.BODY || name === WYMeditor.DIV) {
             // Replace text nodes with <p> tags
             wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
@@ -212,6 +219,9 @@ WYMeditor.WymClassSafari.prototype.keyup = function (evt) {
             evt.keyCode === WYMeditor.KEY.RIGHT ||
             evt.keyCode === WYMeditor.KEY.BACKSPACE ||
             evt.keyCode === WYMeditor.KEY.ENTER) {
+        if (evt.keyCode === WYMeditor.KEY.ENTER) {
+          wym.cleanUpCopiedClassAndAttribute();
+        }
         wym.fixBodyHtml();
     }
 };
