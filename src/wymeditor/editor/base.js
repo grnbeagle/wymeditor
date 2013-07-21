@@ -2561,7 +2561,7 @@ WYMeditor.editor.prototype.cleanUpCopiedClassAndAttribute = function () {
     } else {
       if (jQuery(container).parent()[0].tagName.toLowerCase() == 'p') {
         jQuery(container).parent().removeAttr('class');
-        jQuery(container).parent().children().remove(); // cleanup children
+        //jQuery(container).parent().children().remove(); // cleanup children
       }
     }
   }
