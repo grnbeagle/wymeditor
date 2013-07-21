@@ -110,8 +110,7 @@ WYMeditor.WymClassSafari.prototype._exec = function (cmd, param) {
         // If the container is a span, strip it out if it doesn't have a class
         // but has an inline style of 'font-weight: normal;'.
         if (tagName === 'span' &&
-            !$container.attr('class') &&
-            $container.attr('style') === 'font-weight: normal;') {
+            !$container.attr('class')) {
 
             $container.contents().unwrap();
         }
